@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: a27221e0e9b55394aaefb6de8ae59b70
+timeCreated: 1488491806
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Evanescent
+  fontNames:
+  - Evanescent
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 591720a56f86cfc40ae4fddf90f42bd9, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

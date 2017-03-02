@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
@@ -111,5 +112,10 @@ public class GameManager : MonoBehaviour {
         if (loser.player == 1) p = 2;
         else if (loser.player == 2) p = 1;
         gameOverText.text = "PLAYER " + p + " VICTORY";
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
