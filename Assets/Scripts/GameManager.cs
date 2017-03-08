@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour {
     public int p1towers;
     public int p2towers;
 
+    public bool ff;
+    public Toggle fftoggle;
+
 	void Start()
     {
         charSelect.SetActive(true);
@@ -38,6 +41,8 @@ public class GameManager : MonoBehaviour {
 
         p1towers = maxTowers;
         p2towers = maxTowers;
+
+        ff = true;
 	}
 	
 	void Update()
@@ -45,20 +50,25 @@ public class GameManager : MonoBehaviour {
 		
 	}
 
-    public void SelectFire()
+    public void SelectElement(int e)
     {
         if (currPlayer == 1)
         {
-            p1 = 0;
+            p1 = e;
             currPlayer += 1;
             playerText.text = "P2";
         }
         else if (currPlayer == 2)
         {
-            p2 = 0;
+            p2 = e;
             charSelect.SetActive(false);
             instructions.SetActive(true);
         }
+    }
+
+    public void ToggleFriendlyFire()
+    {
+        ff = fftoggle.isOn;
     }
 
     public void StartBattle()

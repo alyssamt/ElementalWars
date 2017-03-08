@@ -25,7 +25,19 @@ public class Tower : MonoBehaviour {
         colorDecrement = (255 - 100) / maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Damager")
+        {
+            Damager dmger = collision.collider.GetComponent<Damager>();
+            if (gm.ff || dmger.player != player)
+            {
+                TakeDamage(dmger.damage);
+            }
+        }
+    }
+
+    private void TakeDamage(int damage)
     {
         health -= damage;
         rend.color = new Color((rend.color.r - (colorDecrement*damage))/255, (rend.color.g - (colorDecrement*damage)) / 255, (rend.color.b - (colorDecrement*damage)) / 255, 1);

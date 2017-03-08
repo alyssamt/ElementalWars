@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour {
+public class Fireball : Damager {
 
     public int speed;
-    public int damage;
 
     void Start()
     {
@@ -13,14 +12,17 @@ public class Fireball : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Player")
+        if (collision.collider.tag == "Barrier")
         {
-            collision.gameObject.GetComponent<Character>().TakeDamage(damage);
+
         }
-        else if (collision.collider.tag == "Tower")
+        else
         {
-            collision.gameObject.GetComponent<Tower>().TakeDamage(damage);
+            if (collision.collider.tag == "Player")
+            {
+                collision.gameObject.GetComponent<Character>().TakeDamage(damage);
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

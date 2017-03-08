@@ -75,10 +75,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Air.cs" />
+    <Compile Include="Assets\Scripts\Barrier.cs" />
     <Compile Include="Assets\Scripts\Character.cs" />
+    <Compile Include="Assets\Scripts\Combust.cs" />
+    <Compile Include="Assets\Scripts\Damager.cs" />
     <Compile Include="Assets\Scripts\Fire.cs" />
     <Compile Include="Assets\Scripts\Fireball.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Tornado.cs" />
     <Compile Include="Assets\Scripts\Tower.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

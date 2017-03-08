@@ -32,6 +32,7 @@ public class Character : MonoBehaviour {
 	void Start()
     {
         primaryCD = maxPrimaryCD;
+        secondaryCD = maxSecondaryCD;
         health = maxHealth;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         rigid = GetComponent<Rigidbody2D>();
