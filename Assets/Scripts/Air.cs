@@ -10,18 +10,21 @@ public class Air : Character
 
     public override void FixedUpdate()
     {
-        base.FixedUpdate();
-
-        if (primaryCD == maxPrimaryCD && Input.GetKeyDown(primaryKey))
+        if (gm.playing)
         {
-            Tornado();
-            primaryCD = 0;
-        }
+            base.FixedUpdate();
 
-        if (secondaryCD == maxSecondaryCD && Input.GetKeyDown(secondaryKey))
-        {
-            Barrier();
-            secondaryCD = 0;
+            if (primaryCD == maxPrimaryCD && Input.GetKeyDown(primaryKey))
+            {
+                Tornado();
+                primaryCD = 0;
+            }
+
+            if (secondaryCD == maxSecondaryCD && Input.GetKeyDown(secondaryKey))
+            {
+                Barrier();
+                secondaryCD = 0;
+            }
         }
     }
 

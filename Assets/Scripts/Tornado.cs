@@ -9,15 +9,16 @@ public class Tornado : Damager {
     private float dmgTimer;
     public float maxDmgTimer;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         dmgTimer = 0;
         Invoke("DestroyMe", duration);
     }
 
     private void Update()
     {
-        if (dmgTimer > 0) dmgTimer -= Time.deltaTime;
+        if (gm.playing && dmgTimer > 0) dmgTimer -= Time.deltaTime;
     }
 
     private void OnTriggerStay2D(Collider2D collision)

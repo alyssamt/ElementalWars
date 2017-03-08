@@ -23,7 +23,7 @@ public class Character : MonoBehaviour {
     public int health;
     public int maxHealth;
 
-    private GameManager gm;
+    public GameManager gm;
     private Rigidbody2D rigid;
 
     private int horiz;
@@ -50,41 +50,44 @@ public class Character : MonoBehaviour {
 	
 	public virtual void FixedUpdate()
     {
-        // Movement
-        if (player == 1)
+        if (gm.playing)
         {
-            if (Input.GetKey(KeyCode.A)) horiz = -1;
-            else if (Input.GetKey(KeyCode.D)) horiz = 1;
-            else horiz = 0;
+            // Movement
+            if (player == 1)
+            {
+                if (Input.GetKey(KeyCode.A)) horiz = -1;
+                else if (Input.GetKey(KeyCode.D)) horiz = 1;
+                else horiz = 0;
 
-            if (Input.GetKey(KeyCode.W)) vert = 1;
-            else if (Input.GetKey(KeyCode.S)) vert = -1;
-            else vert = 0;
+                if (Input.GetKey(KeyCode.W)) vert = 1;
+                else if (Input.GetKey(KeyCode.S)) vert = -1;
+                else vert = 0;
+            }
+            else if (player == 2)
+            {
+                if (Input.GetKey(KeyCode.LeftArrow)) horiz = -1;
+                else if (Input.GetKey(KeyCode.RightArrow)) horiz = 1;
+                else horiz = 0;
+
+                if (Input.GetKey(KeyCode.UpArrow)) vert = 1;
+                else if (Input.GetKey(KeyCode.DownArrow)) vert = -1;
+                else vert = 0;
+            }
+            rigid.velocity = new Vector2(Mathf.Lerp(0, horiz * speed, 0.8f), Mathf.Lerp(0, vert * speed, 0.8f));
+
+            // Rotation
+            if (rigid.velocity != Vector2.zero)
+                transform.up = rigid.velocity;
+
+            // Cooldowns
+            if (primaryCD < maxPrimaryCD) primaryCD += Time.deltaTime;
+            if (primaryCD > maxPrimaryCD) primaryCD = maxPrimaryCD;
+            primaryCDimg.fillAmount = primaryCD / maxPrimaryCD;
+
+            if (secondaryCD < maxSecondaryCD) secondaryCD += Time.deltaTime;
+            if (secondaryCD > maxSecondaryCD) secondaryCD = maxSecondaryCD;
+            secondaryCDimg.fillAmount = secondaryCD / maxSecondaryCD;
         }
-        else if (player == 2)
-        {
-            if (Input.GetKey(KeyCode.LeftArrow)) horiz = -1;
-            else if (Input.GetKey(KeyCode.RightArrow)) horiz = 1;
-            else horiz = 0;
-
-            if (Input.GetKey(KeyCode.UpArrow)) vert = 1;
-            else if (Input.GetKey(KeyCode.DownArrow)) vert = -1;
-            else vert = 0;
-        }
-        rigid.velocity = new Vector2(Mathf.Lerp(0, horiz * speed, 0.8f), Mathf.Lerp(0, vert * speed, 0.8f));
-
-        // Rotation
-        if (rigid.velocity != Vector2.zero)
-            transform.up = rigid.velocity;
-
-        // Cooldowns
-        if (primaryCD < maxPrimaryCD) primaryCD += Time.deltaTime;
-        if (primaryCD > maxPrimaryCD) primaryCD = maxPrimaryCD;
-        primaryCDimg.fillAmount = primaryCD / maxPrimaryCD;
-
-        if (secondaryCD < maxSecondaryCD) secondaryCD += Time.deltaTime;
-        if (secondaryCD > maxSecondaryCD) secondaryCD = maxSecondaryCD;
-        secondaryCDimg.fillAmount = secondaryCD / maxSecondaryCD;
     }
 
     public void TakeDamage(int damage)

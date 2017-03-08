@@ -6,16 +6,19 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+    public bool playing;
     public int maxTowers;
 
-    public GameObject charSelect;
+    public GameObject mainMenu;
     public GameObject instructions;
+    public GameObject charSelect;
     public GameObject gameScreen;
     public GameObject gameOverScreen;
     public Text playerText;
     public Text gameOverText;
 
     public List<GameObject> charPrefabs;
+    public GameObject towersPrefab;
 
     private int currPlayer;
     private int p1;
@@ -32,8 +35,11 @@ public class GameManager : MonoBehaviour {
 
 	void Start()
     {
-        charSelect.SetActive(true);
+        playing = false;
+
+        mainMenu.SetActive(true);
         instructions.SetActive(false);
+        charSelect.SetActive(false);
         gameScreen.SetActive(false);
         gameOverScreen.SetActive(false);
 
@@ -62,7 +68,8 @@ public class GameManager : MonoBehaviour {
         {
             p2 = e;
             charSelect.SetActive(false);
-            instructions.SetActive(true);
+            gameScreen.SetActive(true);
+            StartBattle();
         }
     }
 
@@ -73,9 +80,16 @@ public class GameManager : MonoBehaviour {
 
     public void StartBattle()
     {
-        charSelect.SetActive(false);
-        instructions.SetActive(false);
-        gameScreen.SetActive(true);
+        foreach (GameObject p in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            Destroy(p);
+        }
+        GameObject t = GameObject.Find("Towers");
+        if (t != null)
+        {
+            Destroy(t);
+        }
+        Instantiate(towersPrefab);
 
         GameObject p1go = Instantiate(charPrefabs[p1], new Vector2(-7, 0), Quaternion.identity);
         p1c = p1go.GetComponent<Character>();
@@ -92,6 +106,8 @@ public class GameManager : MonoBehaviour {
         p2c.secondaryKey = KeyCode.Keypad0;
         p2health.maxValue = p2c.maxHealth;
         p2health.value = p2health.maxValue;
+
+        playing = true;
     }
 
     public void UpdateHealthSliders()
@@ -117,6 +133,7 @@ public class GameManager : MonoBehaviour {
 
     public void GameOver(Character loser)
     {
+        playing = false;
         gameOverScreen.SetActive(true);
         int p = 0;
         if (loser.player == 1) p = 2;
@@ -124,8 +141,10 @@ public class GameManager : MonoBehaviour {
         gameOverText.text = "PLAYER " + p + " VICTORY";
     }
 
+    /*
     public void PlayAgain()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    */
 }

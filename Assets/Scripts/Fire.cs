@@ -9,18 +9,21 @@ public class Fire : Character {
 
     public override void FixedUpdate()
     {
-        base.FixedUpdate();
-
-        if (primaryCD == maxPrimaryCD && Input.GetKeyDown(primaryKey))
+        if (gm.playing)
         {
-            Fireball();
-            primaryCD = 0;
-        }
+            base.FixedUpdate();
 
-        if (secondaryCD == maxSecondaryCD && Input.GetKeyDown(secondaryKey))
-        {
-            Combust();
-            secondaryCD = 0;
+            if (primaryCD == maxPrimaryCD && Input.GetKeyDown(primaryKey))
+            {
+                Fireball();
+                primaryCD = 0;
+            }
+
+            if (secondaryCD == maxSecondaryCD && Input.GetKeyDown(secondaryKey))
+            {
+                Combust();
+                secondaryCD = 0;
+            }
         }
     }
 
