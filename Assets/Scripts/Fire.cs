@@ -10,9 +10,10 @@ public class Fire : Character {
     {
         base.FixedUpdate();
 
-        if (Input.GetKeyDown(primaryKey))
+        if (primaryCD == maxPrimaryCD && Input.GetKeyDown(primaryKey))
         {
             Fireball();
+            primaryCD = 0;
         }
     }
 

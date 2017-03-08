@@ -9,21 +9,42 @@ public class Character : MonoBehaviour {
     public KeyCode primaryKey;
     public KeyCode secondaryKey;
 
+    [HideInInspector]
+    public float primaryCD;
+    public float maxPrimaryCD;
+    [HideInInspector]
+    public float secondaryCD;
+    public float maxSecondaryCD;
+    private Image primaryCDimg;
+    private Image secondaryCDimg;
+
     public int speed;
+    [HideInInspector]
     public int health;
     public int maxHealth;
 
-    public GameManager gm;
-    public Rigidbody2D rigid;
+    private GameManager gm;
+    private Rigidbody2D rigid;
 
     private int horiz;
     private int vert;
 
 	void Start()
     {
+        primaryCD = maxPrimaryCD;
         health = maxHealth;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         rigid = GetComponent<Rigidbody2D>();
+        if (player == 1)
+        {
+            primaryCDimg = GameObject.Find("P1PI").GetComponent<Image>();
+            secondaryCDimg = GameObject.Find("P1SI").GetComponent<Image>();
+        }
+        if (player == 2)
+        {
+            primaryCDimg = GameObject.Find("P2PI").GetComponent<Image>();
+            secondaryCDimg = GameObject.Find("P2SI").GetComponent<Image>();
+        }
 	}
 	
 	public virtual void FixedUpdate()
@@ -54,6 +75,15 @@ public class Character : MonoBehaviour {
         // Rotation
         if (rigid.velocity != Vector2.zero)
             transform.up = rigid.velocity;
+
+        // Cooldowns
+        if (primaryCD < maxPrimaryCD) primaryCD += Time.deltaTime;
+        if (primaryCD > maxPrimaryCD) primaryCD = maxPrimaryCD;
+        primaryCDimg.fillAmount = primaryCD / maxPrimaryCD;
+
+        if (secondaryCD < maxSecondaryCD) secondaryCD += Time.deltaTime;
+        if (secondaryCD > maxSecondaryCD) secondaryCD = maxSecondaryCD;
+        secondaryCDimg.fillAmount = secondaryCD / maxSecondaryCD;
     }
 
     public void TakeDamage(int damage)
