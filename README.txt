@@ -27,4 +27,11 @@ Wind Pattern | https://s-media-cache-ak0.pinimg.com/236x/78/a8/75/78a875ff493c87
 
 
 SOUND:
+BG Music | One Punch Man OST
+Combust | http://www.freesound.org/people/ReadeOnly/sounds/186932/
+Fireball | http://www.freesound.org/people/Robinhood76/sounds/248116/
+Player Hit | http://www.freesound.org/people/grunz/sounds/104697/
+Tornado | http://www.freesound.org/people/RogerBoyX69/sounds/338721/
+Tower Hit | http://www.freesound.org/people/TROLlox_78/sounds/274119/
+Wind Barrier | http://www.freesound.org/people/LS/sounds/39048/
 

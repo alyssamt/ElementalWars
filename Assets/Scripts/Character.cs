@@ -30,6 +30,7 @@ public class Character : MonoBehaviour {
 
     public GameManager gm;
     private Rigidbody2D rigid;
+    private AudioSource audSrc;
 
     private int horiz;
     private int vert;
@@ -41,6 +42,7 @@ public class Character : MonoBehaviour {
         health = maxHealth;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         rigid = GetComponent<Rigidbody2D>();
+        audSrc = GetComponent<AudioSource>();
         if (player == 1)
         {
             primaryIconImg = GameObject.Find("P1PA").GetComponent<Image>();
@@ -116,6 +118,7 @@ public class Character : MonoBehaviour {
 
     public void TakeDamage(int damage)
     {
+        audSrc.Play();
         health -= damage;
         gm.UpdateHealthSliders();
         if (health <= 0)
