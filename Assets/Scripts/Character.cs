@@ -15,8 +15,13 @@ public class Character : MonoBehaviour {
     [HideInInspector]
     public float secondaryCD;
     public float maxSecondaryCD;
+    private Image primaryIconImg;
     private Image primaryCDimg;
+    private Image secondaryIconImg;
     private Image secondaryCDimg;
+
+    public Sprite primaryIcon;
+    public Sprite secondaryIcon;
 
     public int speed;
     [HideInInspector]
@@ -31,21 +36,27 @@ public class Character : MonoBehaviour {
 
 	void Start()
     {
-        primaryCD = maxPrimaryCD;
-        secondaryCD = maxSecondaryCD;
+        primaryCD = 0;
+        secondaryCD = 0;
         health = maxHealth;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         rigid = GetComponent<Rigidbody2D>();
         if (player == 1)
         {
+            primaryIconImg = GameObject.Find("P1PA").GetComponent<Image>();
             primaryCDimg = GameObject.Find("P1PI").GetComponent<Image>();
+            secondaryIconImg = GameObject.Find("P1SA").GetComponent<Image>();
             secondaryCDimg = GameObject.Find("P1SI").GetComponent<Image>();
         }
         if (player == 2)
         {
+            primaryIconImg = GameObject.Find("P2PA").GetComponent<Image>();
             primaryCDimg = GameObject.Find("P2PI").GetComponent<Image>();
+            secondaryIconImg = GameObject.Find("P2SA").GetComponent<Image>();
             secondaryCDimg = GameObject.Find("P2SI").GetComponent<Image>();
         }
+        primaryIconImg.sprite = primaryIcon;
+        secondaryIconImg.sprite = secondaryIcon;
 	}
 	
 	public virtual void FixedUpdate()
@@ -80,13 +91,26 @@ public class Character : MonoBehaviour {
                 transform.up = rigid.velocity;
 
             // Cooldowns
-            if (primaryCD < maxPrimaryCD) primaryCD += Time.deltaTime;
-            if (primaryCD > maxPrimaryCD) primaryCD = maxPrimaryCD;
+            if (primaryCD > 0) primaryCD -= Time.deltaTime;
+            if (primaryCD < 0) primaryCD = 0;
             primaryCDimg.fillAmount = primaryCD / maxPrimaryCD;
 
-            if (secondaryCD < maxSecondaryCD) secondaryCD += Time.deltaTime;
-            if (secondaryCD > maxSecondaryCD) secondaryCD = maxSecondaryCD;
+            if (secondaryCD > 0) secondaryCD -= Time.deltaTime;
+            if (secondaryCD < 0) secondaryCD = 0;
             secondaryCDimg.fillAmount = secondaryCD / maxSecondaryCD;
+
+            // Abilities
+            if (primaryCD == 0 && Input.GetKeyDown(primaryKey))
+            {
+                Primary();
+                primaryCD = maxPrimaryCD;
+            }
+
+            if (secondaryCD == 0 && Input.GetKeyDown(secondaryKey))
+            {
+                Secondary();
+                secondaryCD = maxPrimaryCD;
+            }
         }
     }
 
@@ -98,5 +122,15 @@ public class Character : MonoBehaviour {
         {
             gm.GameOver(this);
         }
+    }
+
+    public virtual void Primary()
+    {
+
+    }
+
+    public virtual void Secondary()
+    {
+
     }
 }

@@ -7,28 +7,10 @@ public class Fire : Character {
     public GameObject fireballPrefab;
     public GameObject combustPrefab;
 
-    public override void FixedUpdate()
+    public override void Primary()
     {
-        if (gm.playing)
-        {
-            base.FixedUpdate();
+        // Fireball
 
-            if (primaryCD == maxPrimaryCD && Input.GetKeyDown(primaryKey))
-            {
-                Fireball();
-                primaryCD = 0;
-            }
-
-            if (secondaryCD == maxSecondaryCD && Input.GetKeyDown(secondaryKey))
-            {
-                Combust();
-                secondaryCD = 0;
-            }
-        }
-    }
-
-    private void Fireball()
-    {
         GameObject fireball = Instantiate(fireballPrefab, transform.position, transform.rotation);
         Damager script = fireball.GetComponent<Damager>();
         script.player = player;
@@ -39,8 +21,10 @@ public class Fire : Character {
         Physics2D.IgnoreCollision(fireball.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
-    private void Combust()
+    public override void Secondary()
     {
+        // Combust
+
         GameObject combust = Instantiate(combustPrefab, gameObject.transform.position, Quaternion.identity, gameObject.transform);
         Damager script = combust.GetComponent<Damager>();
         script.player = player;

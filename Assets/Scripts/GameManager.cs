@@ -61,12 +61,13 @@ public class GameManager : MonoBehaviour {
         if (currPlayer == 1)
         {
             p1 = e;
-            currPlayer += 1;
+            currPlayer = 2;
             playerText.text = "P2";
         }
         else if (currPlayer == 2)
         {
             p2 = e;
+            currPlayer = 1;
             charSelect.SetActive(false);
             gameScreen.SetActive(true);
             StartBattle();
