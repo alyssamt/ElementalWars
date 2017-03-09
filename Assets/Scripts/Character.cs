@@ -35,7 +35,9 @@ public class Character : MonoBehaviour {
     private int horiz;
     private int vert;
 
-	void Start()
+    private bool slipping;
+
+	public virtual void Start()
     {
         primaryCD = 0;
         secondaryCD = 0;
@@ -59,38 +61,43 @@ public class Character : MonoBehaviour {
         }
         primaryIconImg.sprite = primaryIcon;
         secondaryIconImg.sprite = secondaryIcon;
+
+        slipping = false;
 	}
 	
 	public virtual void FixedUpdate()
     {
         if (gm.playing)
         {
-            // Movement
-            if (player == 1)
+            if (!slipping)
             {
-                if (Input.GetKey(KeyCode.A)) horiz = -1;
-                else if (Input.GetKey(KeyCode.D)) horiz = 1;
-                else horiz = 0;
+                // Movement
+                if (player == 1)
+                {
+                    if (Input.GetKey(KeyCode.A)) horiz = -1;
+                    else if (Input.GetKey(KeyCode.D)) horiz = 1;
+                    else horiz = 0;
 
-                if (Input.GetKey(KeyCode.W)) vert = 1;
-                else if (Input.GetKey(KeyCode.S)) vert = -1;
-                else vert = 0;
+                    if (Input.GetKey(KeyCode.W)) vert = 1;
+                    else if (Input.GetKey(KeyCode.S)) vert = -1;
+                    else vert = 0;
+                }
+                else if (player == 2)
+                {
+                    if (Input.GetKey(KeyCode.LeftArrow)) horiz = -1;
+                    else if (Input.GetKey(KeyCode.RightArrow)) horiz = 1;
+                    else horiz = 0;
+
+                    if (Input.GetKey(KeyCode.UpArrow)) vert = 1;
+                    else if (Input.GetKey(KeyCode.DownArrow)) vert = -1;
+                    else vert = 0;
+                }
+                rigid.velocity = new Vector2(Mathf.Lerp(0, horiz * speed, 0.8f), Mathf.Lerp(0, vert * speed, 0.8f));
+
+                // Rotation
+                if (rigid.velocity != Vector2.zero)
+                    transform.up = rigid.velocity;
             }
-            else if (player == 2)
-            {
-                if (Input.GetKey(KeyCode.LeftArrow)) horiz = -1;
-                else if (Input.GetKey(KeyCode.RightArrow)) horiz = 1;
-                else horiz = 0;
-
-                if (Input.GetKey(KeyCode.UpArrow)) vert = 1;
-                else if (Input.GetKey(KeyCode.DownArrow)) vert = -1;
-                else vert = 0;
-            }
-            rigid.velocity = new Vector2(Mathf.Lerp(0, horiz * speed, 0.8f), Mathf.Lerp(0, vert * speed, 0.8f));
-
-            // Rotation
-            if (rigid.velocity != Vector2.zero)
-                transform.up = rigid.velocity;
 
             // Cooldowns
             if (primaryCD > 0) primaryCD -= Time.deltaTime;
@@ -116,7 +123,7 @@ public class Character : MonoBehaviour {
         }
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         audSrc.Play();
         health -= damage;
@@ -125,6 +132,17 @@ public class Character : MonoBehaviour {
         {
             gm.GameOver(this);
         }
+    }
+
+    public void StartSlipping()
+    {
+        slipping = true;
+        rigid.velocity /= 2;
+    }
+
+    public void StopSlipping()
+    {
+        slipping = false;
     }
 
     public virtual void Primary()

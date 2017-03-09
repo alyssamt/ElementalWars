@@ -53,6 +53,10 @@ public class TextButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         {
             gm.SelectElement(1);
         }
+        else if (gameObject.name == "Water")
+        {
+            gm.SelectElement(2);
+        }
         else if (gameObject.name == "Quit")
         {
             Application.Quit();
