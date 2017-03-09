@@ -32,8 +32,10 @@ SOUND:
 BG Music | One Punch Man OST
 Combust | http://www.freesound.org/people/ReadeOnly/sounds/186932/
 Fireball | http://www.freesound.org/people/Robinhood76/sounds/248116/
+Ice Trail | http://www.freesound.org/people/karlis.stigis/sounds/168712/
 Player Hit | http://www.freesound.org/people/grunz/sounds/104697/
 Tornado | http://www.freesound.org/people/RogerBoyX69/sounds/338721/
 Tower Hit | http://www.freesound.org/people/TROLlox_78/sounds/274119/
+Tsunami | http://www.freesound.org/people/Kayyy/sounds/61013/
 Wind Barrier | http://www.freesound.org/people/LS/sounds/39048/
 

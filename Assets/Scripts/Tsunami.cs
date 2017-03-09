@@ -27,24 +27,21 @@ public class Tsunami : Damager {
             else if (player == 2) player = 1;
             // Don't destroy; ricochet
         }
-        else
+        else if (collider.tag == "Player")
         {
-            if (collider.tag == "Player")
+            collider.gameObject.GetComponent<Character>().TakeDamage(damage);
+        }
+        else if (collider.tag == "Tower")
+        {
+            Tower script = collider.GetComponent<Tower>();
+            if (gm.ff || script.player != player)
             {
-                collider.gameObject.GetComponent<Character>().TakeDamage(damage);
+                script.TakeDamage(damage);
             }
-            else if (collider.tag == "Tower")
-            {
-                Tower script = collider.GetComponent<Tower>();
-                if (gm.ff || script.player != player)
-                {
-                    script.TakeDamage(damage);
-                }
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+        }
+        else if (collider.tag == "ScreenCollider")
+        {
+            Destroy(gameObject);
         }
     }
 }
