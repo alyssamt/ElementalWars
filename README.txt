@@ -13,14 +13,13 @@ ART:
 Arrow | http://www.pd4pic.com/pointing/
 Court Background | http://opengameart.org/content/pong-programmer-art
 Earth Pattern | https://www.123rf.com/photo_918900_cracked-earth-pattern.html
-Elemental Background | http://g1zz1e.deviantart.com/art/elemental-background-118550044
 Fireball | http://opengameart.org/content/animated-traps-and-obstacles
-Fire Circle | http://ewcmiradio.com/index.php/top-home/the-logo-of-ewcmi-and-its-affiliates
+Fire Circle (Combust) | http://ewcmiradio.com/index.php/top-home/the-logo-of-ewcmi-and-its-affiliates
 Fire Pattern | http://www.artsfon.com/download/76737/1280x720/
-Fire vs. Water BG | http://groltard.deviantart.com/art/Eagle-Fire-vs-Water-final-611099873
-Four Elements Wallpaper | http://hd-wall-papers.com/single/1667449-four-elements-wallpaper.html
+Fire vs. Water BG (Main Menu) | http://groltard.deviantart.com/art/Eagle-Fire-vs-Water-final-611099873
+Four Elements Wallpaper (Character Select) | http://hd-wall-papers.com/single/1667449-four-elements-wallpaper.html
 Green Dot | http://rvap.umbc.edu/greendot/
-Ice Icon | http://www.iconarchive.com/show/weather-icons-by-icons-land/Ice-icon.html
+Icecube Icon | http://www.iconarchive.com/show/weather-icons-by-icons-land/Ice-icon.html
 Rock | http://herebemonsters.wikia.com/wiki/File:Zen-Rock-Sprite.png
 Tornado | https://images.images4us.com/888poker/en/657x329_image_tornado_tcm1488-259149.png
 Tower | http://icons.mysitemyway.com/legacy-icon/021685-yellow-road-sign-icon-symbols-shapes-shapes-circle-clear/
@@ -36,6 +35,7 @@ Combust | http://www.freesound.org/people/ReadeOnly/sounds/186932/
 Fireball | http://www.freesound.org/people/Robinhood76/sounds/248116/
 Ice Trail | http://www.freesound.org/people/karlis.stigis/sounds/168712/
 Player Hit | http://www.freesound.org/people/grunz/sounds/104697/
+Rock | http://www.freesound.org/people/qubodup/sounds/157609/
 Tornado | http://www.freesound.org/people/RogerBoyX69/sounds/338721/
 Tower Hit | http://www.freesound.org/people/TROLlox_78/sounds/274119/
 Tsunami | http://www.freesound.org/people/Kayyy/sounds/61013/

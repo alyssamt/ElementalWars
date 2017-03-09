@@ -6,9 +6,12 @@ public class Rock : Damager {
 
     public int speed;
     public float duration;
+    public AudioSource audSrc;
 
     public override void Start()
     {
+        audSrc = GetComponent<AudioSource>();
+
         base.Start();
         Invoke("DestroyMe", duration);
     }

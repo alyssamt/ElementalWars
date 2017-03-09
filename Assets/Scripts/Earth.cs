@@ -39,6 +39,7 @@ public class Earth : Character {
                 rr.velocity = rs.origVel;
                 rock.GetComponent<Collider2D>().isTrigger = false;
                 rock.tag = "Damager";
+                rs.audSrc.Play();
             }
         }
     }
