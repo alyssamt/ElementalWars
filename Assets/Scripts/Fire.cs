@@ -10,12 +10,16 @@ public class Fire : Character {
     public override void Primary()
     {
         // Fireball
+
         GameObject fireball = Instantiate(fireballPrefab, transform.position, transform.rotation); //, transform.rotation*Quaternion.Euler(0,0,-90));
         Damager script = fireball.GetComponent<Damager>();
         script.player = player;
+        script.parent = gameObject;
 
+        Fireball fb = fireball.GetComponent<Fireball>();
         Rigidbody2D fireRigid = fireball.GetComponent<Rigidbody2D>();
-        fireRigid.velocity = transform.up * fireball.GetComponent<Fireball>().speed;
+        fb.origVel = transform.up * fb.speed;
+        fireRigid.velocity = fb.origVel;
 
         Physics2D.IgnoreCollision(fireball.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }

@@ -21,13 +21,7 @@ public class Tsunami : Damager {
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag == "Barrier")
-        {
-            if (player == 1) player = 2;
-            else if (player == 2) player = 1;
-            // Don't destroy; ricochet
-        }
-        else if (collider.tag == "Player")
+        if (collider.tag == "Player")
         {
             collider.gameObject.GetComponent<Character>().TakeDamage(damage);
         }
@@ -39,9 +33,26 @@ public class Tsunami : Damager {
                 script.TakeDamage(damage);
             }
         }
-        else if (collider.tag == "ScreenCollider")
+        else if (collider.name.Contains("Tsunami"))
+        {
+            Destroy(collider.gameObject);
+            Destroy(gameObject);
+        }
+        else if (collider.tag == "Barrier")
+        {
+            if (player == 1) player = 2;
+            else if (player == 2) player = 1;
+            rigid.velocity *= -1;
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), parent.GetComponent<Collider2D>(), false);
+        }
+        else if (collider.tag == "Wall" || collider.tag == "ScreenCollider")
         {
             Destroy(gameObject);
+        }
+        else if (collider.name.Contains("Fireball") || collider.name.Contains("Rock"))
+        {
+            // Must be AFTER tag check for wall
+            Destroy(collider.gameObject);
         }
     }
 }

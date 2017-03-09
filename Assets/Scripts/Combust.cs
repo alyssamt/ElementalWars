@@ -20,6 +20,14 @@ public class Combust : Damager
                 script.TakeDamage(damage);
             }
         }
+        else if (collision.tag == "Tower")
+        {
+            Tower script = collision.GetComponent<Tower>();
+            if (gm.ff || script.player != player)
+            {
+                script.TakeDamage(damage);
+            }
+        }
     }
 
     private void DestroyMe()

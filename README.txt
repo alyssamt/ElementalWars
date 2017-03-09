@@ -10,6 +10,7 @@ Add later
 
 
 ART:
+Arrow | http://www.pd4pic.com/pointing/
 Court Background | http://opengameart.org/content/pong-programmer-art
 Earth Pattern | https://www.123rf.com/photo_918900_cracked-earth-pattern.html
 Elemental Background | http://g1zz1e.deviantart.com/art/elemental-background-118550044
@@ -20,6 +21,7 @@ Fire vs. Water BG | http://groltard.deviantart.com/art/Eagle-Fire-vs-Water-final
 Four Elements Wallpaper | http://hd-wall-papers.com/single/1667449-four-elements-wallpaper.html
 Green Dot | http://rvap.umbc.edu/greendot/
 Ice Icon | http://www.iconarchive.com/show/weather-icons-by-icons-land/Ice-icon.html
+Rock | http://herebemonsters.wikia.com/wiki/File:Zen-Rock-Sprite.png
 Tornado | https://images.images4us.com/888poker/en/657x329_image_tornado_tcm1488-259149.png
 Tower | http://icons.mysitemyway.com/legacy-icon/021685-yellow-road-sign-icon-symbols-shapes-shapes-circle-clear/
 Tsunami | https://clipartfest.com/categories/view/375607246638d8cf1ea68a17c9a3a065f069888d/clipart-waves-transparent.html

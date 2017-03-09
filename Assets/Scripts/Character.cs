@@ -64,6 +64,32 @@ public class Character : MonoBehaviour {
 
         slipping = false;
 	}
+
+    public virtual void Update()
+    {
+        // Cooldowns
+        if (primaryCD > 0) primaryCD -= Time.deltaTime;
+        if (primaryCD < 0) primaryCD = 0;
+        primaryCDimg.fillAmount = primaryCD / maxPrimaryCD;
+
+        if (secondaryCD > 0) secondaryCD -= Time.deltaTime;
+        if (secondaryCD < 0) secondaryCD = 0;
+        if (maxSecondaryCD == 0) secondaryCDimg.fillAmount = 0;
+        else secondaryCDimg.fillAmount = secondaryCD / maxSecondaryCD;
+
+        // Abilities
+        if (primaryCD <= 0 && Input.GetKeyDown(primaryKey))
+        {
+            Primary();
+            primaryCD = maxPrimaryCD;
+        }
+
+        if (secondaryCD <= 0 && Input.GetKeyDown(secondaryKey))
+        {
+            Secondary();
+            secondaryCD = maxPrimaryCD;
+        }
+    }
 	
 	public virtual void FixedUpdate()
     {
@@ -97,28 +123,6 @@ public class Character : MonoBehaviour {
                 // Rotation
                 if (rigid.velocity != Vector2.zero)
                     transform.up = rigid.velocity;
-            }
-
-            // Cooldowns
-            if (primaryCD > 0) primaryCD -= Time.deltaTime;
-            if (primaryCD < 0) primaryCD = 0;
-            primaryCDimg.fillAmount = primaryCD / maxPrimaryCD;
-
-            if (secondaryCD > 0) secondaryCD -= Time.deltaTime;
-            if (secondaryCD < 0) secondaryCD = 0;
-            secondaryCDimg.fillAmount = secondaryCD / maxSecondaryCD;
-
-            // Abilities
-            if (primaryCD == 0 && Input.GetKeyDown(primaryKey))
-            {
-                Primary();
-                primaryCD = maxPrimaryCD;
-            }
-
-            if (secondaryCD == 0 && Input.GetKeyDown(secondaryKey))
-            {
-                Secondary();
-                secondaryCD = maxPrimaryCD;
             }
         }
     }

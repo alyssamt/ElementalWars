@@ -57,6 +57,10 @@ public class TextButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         {
             gm.SelectElement(2);
         }
+        else if (gameObject.name == "Earth")
+        {
+            gm.SelectElement(3);
+        }
         else if (gameObject.name == "Quit")
         {
             Application.Quit();

@@ -20,6 +20,7 @@ public class Water : Character {
         GameObject tsunami = Instantiate(tsunamiPrefab, transform.position, transform.rotation); //, transform.rotation*Quaternion.Euler(0,0,-90));
         Damager script = tsunami.GetComponent<Damager>();
         script.player = player;
+        script.parent = gameObject;
 
         Rigidbody2D waterRigid = tsunami.GetComponent<Rigidbody2D>();
         waterRigid.velocity = transform.up * tsunami.GetComponent<Tsunami>().speed;

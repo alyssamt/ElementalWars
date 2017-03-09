@@ -80,11 +80,13 @@
     <Compile Include="Assets\Scripts\Character.cs" />
     <Compile Include="Assets\Scripts\Combust.cs" />
     <Compile Include="Assets\Scripts\Damager.cs" />
+    <Compile Include="Assets\Scripts\Earth.cs" />
     <Compile Include="Assets\Scripts\Fire.cs" />
     <Compile Include="Assets\Scripts\Fireball.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\IcePath.cs" />
     <Compile Include="Assets\Scripts\InvisibleCollider.cs" />
+    <Compile Include="Assets\Scripts\Rock.cs" />
     <Compile Include="Assets\Scripts\TextButton.cs" />
     <Compile Include="Assets\Scripts\Tornado.cs" />
     <Compile Include="Assets\Scripts\Tower.cs" />
