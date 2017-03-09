@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Combust : Damager
 {
-    void Start()
+    public override void Start()
     {
+        base.Start();
         Invoke("DestroyMe", 1f);
     }
 

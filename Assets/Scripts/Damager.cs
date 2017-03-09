@@ -9,13 +9,7 @@ public class Damager : MonoBehaviour {
 
     public GameManager gm;
 
-	// Use this for initialization
 	public virtual void Start () {
         if (!gm) gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }

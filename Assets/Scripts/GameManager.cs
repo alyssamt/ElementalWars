@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour {
     public GameObject charSelect;
     public GameObject gameScreen;
     public GameObject gameOverScreen;
+
+    public GameObject countdown;
+    private Text cdText;
     public Text playerText;
     public Text gameOverText;
 
@@ -42,6 +45,8 @@ public class GameManager : MonoBehaviour {
         charSelect.SetActive(false);
         gameScreen.SetActive(false);
         gameOverScreen.SetActive(false);
+
+        cdText = countdown.GetComponentInChildren<Text>();
 
         currPlayer = 1;
 
@@ -92,7 +97,7 @@ public class GameManager : MonoBehaviour {
         }
         Instantiate(towersPrefab);
 
-        GameObject p1go = Instantiate(charPrefabs[p1], new Vector2(-7, 0), Quaternion.identity);
+        GameObject p1go = Instantiate(charPrefabs[p1], new Vector2(-7, 0), Quaternion.Euler(new Vector3(0, 0, -90)));
         p1c = p1go.GetComponent<Character>();
         p1c.player = 1;
         p1c.primaryKey = KeyCode.LeftShift;
@@ -100,7 +105,7 @@ public class GameManager : MonoBehaviour {
         p1health.maxValue = p1c.maxHealth;
         p1health.value = p1health.maxValue;
 
-        GameObject p2go = Instantiate(charPrefabs[p2], new Vector2(7, 0), Quaternion.identity);
+        GameObject p2go = Instantiate(charPrefabs[p2], new Vector2(7, 0), Quaternion.Euler(new Vector3(0, 0, 90)));
         p2c = p2go.GetComponent<Character>();
         p2c.player = 2;
         p2c.primaryKey = KeyCode.RightControl;
@@ -108,6 +113,26 @@ public class GameManager : MonoBehaviour {
         p2health.maxValue = p2c.maxHealth;
         p2health.value = p2health.maxValue;
 
+        StartCoroutine(Countdown());
+    }
+
+    IEnumerator Countdown()
+    {
+        countdown.SetActive(true);
+        /*
+        cdText.text = "3";
+        yield return new WaitForSeconds(1);
+
+        cdText.text = "2";
+        yield return new WaitForSeconds(1);
+        */
+        cdText.text = "READY";
+        yield return new WaitForSeconds(1);
+
+        cdText.text = "FIGHT";
+        yield return new WaitForSeconds(1);
+
+        countdown.SetActive(false);
         playing = true;
     }
 

@@ -13,7 +13,7 @@ public class Tower : MonoBehaviour {
 
     private SpriteRenderer rend;
 
-    private int colorDecrement;
+    private float colorDecrement;
 
     void Start()
     {
@@ -22,7 +22,7 @@ public class Tower : MonoBehaviour {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         rend = GetComponent<SpriteRenderer>();
         rend.color = new Color(255, 255, 255, 255);
-        colorDecrement = (255 - 100) / maxHealth;
+        colorDecrement = 1 / maxHealth;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -37,10 +37,15 @@ public class Tower : MonoBehaviour {
         }
     }
 
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         health -= damage;
-        rend.color = new Color((rend.color.r - (colorDecrement*damage))/255, (rend.color.g - (colorDecrement*damage)) / 255, (rend.color.b - (colorDecrement*damage)) / 255, 1);
+        float newValue = 0f;
+        if (health == 4) newValue = 0.8f;
+        else if (health == 3) newValue = 0.6f;
+        else if (health == 2) newValue = 0.4f;
+        else if (health == 1) newValue = 0.2f;
+        rend.color = new Color(newValue, newValue, newValue);
         if (health <= 0)
         {
             gm.DestroyTower(gameObject, player);

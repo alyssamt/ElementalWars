@@ -23,13 +23,25 @@ public class Tornado : Damager {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && dmgTimer <= 0)
+        if (dmgTimer <= 0)
         {
-            Character script = collision.GetComponent<Character>();
-            if (script.player != player)
+            if (collision.tag == "Player")
             {
-                script.TakeDamage(damage);
-                dmgTimer = maxDmgTimer;
+                Character script = collision.GetComponent<Character>();
+                if (script.player != player)
+                {
+                    script.TakeDamage(damage);
+                    dmgTimer = maxDmgTimer;
+                }
+            }
+            else if (collision.tag == "Tower")
+            {
+                Tower script = collision.GetComponent<Tower>();
+                if (gm.ff || script.player != player)
+                {
+                    script.TakeDamage(damage);
+                    dmgTimer = maxDmgTimer;
+                }
             }
         }
     }

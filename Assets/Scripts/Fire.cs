@@ -10,8 +10,7 @@ public class Fire : Character {
     public override void Primary()
     {
         // Fireball
-
-        GameObject fireball = Instantiate(fireballPrefab, transform.position, transform.rotation);
+        GameObject fireball = Instantiate(fireballPrefab, transform.position, transform.rotation); //, transform.rotation*Quaternion.Euler(0,0,-90));
         Damager script = fireball.GetComponent<Damager>();
         script.player = player;
 
