@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour {
     public Toggle ntmToggle;
 
     public GameObject countdown;
+    public GameObject redText;
+    public GameObject blueText;
 
     public GameObject mainMenu;
     public GameObject instructions;
@@ -33,7 +35,6 @@ public class GameManager : MonoBehaviour {
     public List<GameObject> charPrefabs;
     public List<Sprite> blueSprites;
 
-    public Text playerText;
     public Text gameOverText;
 
     public Slider p1health;
@@ -84,13 +85,16 @@ public class GameManager : MonoBehaviour {
         {
             p1 = e;
             currPlayer = 2;
-            playerText.text = "P2";
+            redText.SetActive(false);
+            blueText.SetActive(true);
         }
         else if (currPlayer == 2)
         {
             p2 = e;
             currPlayer = 1;
-            playerText.text = "P1";
+            redText.SetActive(true);
+            blueText.SetActive(false);
+
             charSelect.SetActive(false);
             gameScreen.SetActive(true);
             StartBattle();
