@@ -1,15 +1,24 @@
+Game 3 Submission
+-----------------
+Teammates:
+1. alyssamt : 52852663
+2. smacha : 
 
-ELEMENTAL WARS
-Created by 
-Alyssa Tan & Saismaran Macha
+Repository:
+https://github.com/alyssamt/ElementalWars
 
+Summary:
+<GAME SUMMARY 1-3 Sentences>
 
-DESCRIPTION:
+Player Experience:
+<FEELING THE DESIGNER WANTS THE PLAYER TO EXPERIENCE 1-3 Sentences>
 
-Add later
+Code References:
+None
 
+Asset References:
 
-ART:
+ART
 Arrow | http://www.pd4pic.com/pointing/
 Court Background | http://opengameart.org/content/pong-programmer-art
 Earth Pattern | https://www.123rf.com/photo_918900_cracked-earth-pattern.html
@@ -28,8 +37,7 @@ Water Pattern | http://mirror2.cze.cz/textures/water-texture-3.jpg
 Wind Barrier | http://www.newdesignfile.com/post_blue-circle-psd_253120/
 Wind Pattern | https://s-media-cache-ak0.pinimg.com/236x/78/a8/75/78a875ff493c87cff5c13999024af16e.jpg
 
-
-SOUND:
+SOUND
 BG Music | One Punch Man OST
 Combust | http://www.freesound.org/people/ReadeOnly/sounds/186932/
 Fireball | http://www.freesound.org/people/Robinhood76/sounds/248116/
