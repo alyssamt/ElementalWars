@@ -7,6 +7,7 @@ public class Combust : Damager
     public override void Start()
     {
         base.Start();
+        damage = am.fireSecondaryDamage;
         Invoke("DestroyMe", 1f);
     }
 

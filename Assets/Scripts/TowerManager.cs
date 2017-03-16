@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class TowerManager : MonoBehaviour {
 
+    public float speed;
+
+    [HideInInspector]
+    public int numRed, numBlue;
+
+    [HideInInspector]
+    public GameManager gm;
+
     public GameObject towerPrefab;
 
     public Sprite redTower;
@@ -14,42 +22,21 @@ public class TowerManager : MonoBehaviour {
     public List<Vector2> bluePos;
     public List<Vector2> blueMov;
 
-    public float speed;
-
-    [HideInInspector]
-    public int numRed, numBlue;
-
-    [HideInInspector]
-    public GameManager gm;
-
     private List<GameObject> redTowers;
     private List<GameObject> blueTowers;
 
 	void Start ()
     {
-        if (!gm) gm = GetComponent<GameManager>();
+        gm = GetComponent<GameManager>();
         redTowers = new List<GameObject>();
         blueTowers = new List<GameObject>();
         Reset();
     }
-	
-	void Update ()
-    {
-        /*
-        if (gm.playing)
-        {
-            Debug.Log(redTowers.Count);
-            for (int i = 0; i != redTowers.Count; i++)
-            {
-                redTowers[i].transform.position = Vector3.Lerp(redPos[i], redMov[i], Mathf.PingPong(Time.time * speed, 1.0f));
-                blueTowers[i].transform.position = Vector3.Lerp(bluePos[i], blueMov[i], Mathf.PingPong(Time.time * speed, 1.0f));
-            }
-        }
-        */
-    }
 
     public void Reset()
     {
+        Debug.Log("Resetting towers");
+
         foreach (GameObject t in GameObject.FindGameObjectsWithTag("Tower"))
         {
             Destroy(t);
@@ -79,10 +66,15 @@ public class TowerManager : MonoBehaviour {
 
         numRed = redPos.Count;
         numBlue = bluePos.Count;
+
+        Debug.Log(numRed);
+        Debug.Log(numBlue);
     }
 
     public void DestroyTower(GameObject t, int player)
     {
+        Debug.Log("Destroying tower");
+
         Destroy(t);
         if (player == 1)
         {
@@ -94,5 +86,8 @@ public class TowerManager : MonoBehaviour {
             numBlue -= 1;
             if (numBlue == 0) gm.GameOver(gm.p2c);
         }
+
+        Debug.Log(numRed);
+        Debug.Log(numBlue);
     }
 }

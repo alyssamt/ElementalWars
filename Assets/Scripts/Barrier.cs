@@ -5,10 +5,12 @@ using UnityEngine;
 public class Barrier : MonoBehaviour {
 
     public int player;
-    public float duration;
+    private AbilityManager am;
 
-    void Start () {
-        Invoke("DestroyMe", duration);
+    void Start ()
+    {
+        am = GameObject.Find("GameManager").GetComponent<AbilityManager>();
+        Invoke("DestroyMe", am.airSecondaryDuration);
     }
 
     private void DestroyMe()

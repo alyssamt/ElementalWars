@@ -4,28 +4,38 @@ using UnityEngine;
 
 public class IcePath : MonoBehaviour {
 
-    public float duration;
     public GameObject invisibleCollider;
-
     private TrailRenderer tr;
+    private AbilityManager am;
 
     private void Start()
     {
         tr = GetComponent<TrailRenderer>();
         tr.enabled = false;
+        am = GameObject.Find("GameManager").GetComponent<AbilityManager>();
     }
 
     public void Enable()
     {
         tr.enabled = true;
         InvokeRepeating("SpawnCollider", 0f, 0.5f);
-        Invoke("Disable", duration);
+        Invoke("Disable", am.waterSecondaryDuration);
     }
 
     private void Disable()
     {
         tr.enabled = false;
         CancelInvoke();
+
+        foreach (GameObject i in GameObject.FindGameObjectsWithTag("IcePath"))
+        {
+            Destroy(i);
+        }
+
+        foreach(GameObject i in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            i.GetComponent<Character>().StopSlipping();
+        }
     }
 
     private void SpawnCollider()

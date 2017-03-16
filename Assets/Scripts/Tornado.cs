@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Tornado : Damager {
 
-    public float duration;
-
     private float dmgTimer;
     public float maxDmgTimer;
 
@@ -13,7 +11,8 @@ public class Tornado : Damager {
     {
         base.Start();
         dmgTimer = 0;
-        Invoke("DestroyMe", duration);
+        damage = am.airPrimaryDamage;
+        Invoke("DestroyMe", am.airPrimaryDuration);
     }
 
     private void Update()

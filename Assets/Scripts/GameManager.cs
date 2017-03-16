@@ -6,7 +6,15 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+    public bool ff; // Friendly fire
     public bool playing;
+
+    [HideInInspector]
+    public TowerManager tm;
+
+    public Toggle fftoggle;
+
+    public GameObject countdown;
 
     public GameObject mainMenu;
     public GameObject instructions;
@@ -14,31 +22,30 @@ public class GameManager : MonoBehaviour {
     public GameObject gameScreen;
     public GameObject gameOverScreen;
 
-    public GameObject countdown;
-    private Text cdText;
+    public List<GameObject> charPrefabs;
+    public List<Sprite> blueSprites;
+
     public Text playerText;
     public Text gameOverText;
 
-    public List<GameObject> charPrefabs;
+    public Slider p1health;
+    public Slider p2health;
+
+    [HideInInspector]
+    public Character p1c, p2c;
 
     private int currPlayer;
     private int p1;
     private int p2;
-    public Character p1c;
-    public Character p2c;
-    public Slider p1health;
-    public Slider p2health;
 
-    public bool ff;
-    public Toggle fftoggle;
+    private Text cdText;
 
-    public List<Sprite> blueSprites;
-
-    public TowerManager tm;
-
-	void Start()
+    void Start()
     {
+        ff = true;
         playing = false;
+
+        tm = GetComponent<TowerManager>();
 
         mainMenu.SetActive(true);
         instructions.SetActive(false);
@@ -46,19 +53,15 @@ public class GameManager : MonoBehaviour {
         gameScreen.SetActive(false);
         gameOverScreen.SetActive(false);
 
-        cdText = countdown.GetComponentInChildren<Text>();
-
         currPlayer = 1;
 
-        ff = true;
+        cdText = countdown.GetComponentInChildren<Text>();
+	}
 
-        if (!tm) tm = GetComponent<TowerManager>();
-	}
-	
-	void Update()
+    public void ToggleFriendlyFire()
     {
-		
-	}
+        ff = fftoggle.isOn;
+    }
 
     public void SelectElement(int e)
     {
@@ -77,11 +80,6 @@ public class GameManager : MonoBehaviour {
             gameScreen.SetActive(true);
             StartBattle();
         }
-    }
-
-    public void ToggleFriendlyFire()
-    {
-        ff = fftoggle.isOn;
     }
 
     public void StartBattle()
@@ -116,13 +114,7 @@ public class GameManager : MonoBehaviour {
     IEnumerator Countdown()
     {
         countdown.SetActive(true);
-        /*
-        cdText.text = "3";
-        yield return new WaitForSeconds(1);
 
-        cdText.text = "2";
-        yield return new WaitForSeconds(1);
-        */
         cdText.text = "READY";
         yield return new WaitForSeconds(1);
 
@@ -148,11 +140,4 @@ public class GameManager : MonoBehaviour {
         else if (loser.player == 2) p = 1;
         gameOverText.text = "PLAYER " + p + " VICTORY";
     }
-
-    /*
-    public void PlayAgain()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-    */
 }

@@ -10,11 +10,8 @@ public class Character : MonoBehaviour {
     public KeyCode secondaryKey;
 
     [HideInInspector]
-    public float primaryCD;
-    public float maxPrimaryCD;
-    [HideInInspector]
-    public float secondaryCD;
-    public float maxSecondaryCD;
+    public float primaryCD, maxPrimaryCD, secondaryCD, maxSecondaryCD;
+
     private Image primaryIconImg;
     private Image primaryCDimg;
     private Image secondaryIconImg;
@@ -29,6 +26,7 @@ public class Character : MonoBehaviour {
     public int maxHealth;
 
     public GameManager gm;
+    public AbilityManager am;
     private Rigidbody2D rigid;
     private AudioSource audSrc;
 
@@ -42,7 +40,9 @@ public class Character : MonoBehaviour {
         primaryCD = 0;
         secondaryCD = 0;
         health = maxHealth;
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        GameObject temp = GameObject.Find("GameManager");
+        gm = temp.GetComponent<GameManager>();
+        am = temp.GetComponent<AbilityManager>();
         rigid = GetComponent<Rigidbody2D>();
         audSrc = GetComponent<AudioSource>();
         if (player == 1)

@@ -11,6 +11,8 @@ public class Earth : Character {
     public override void Start()
     {
         base.Start();
+        maxPrimaryCD = am.earthPrimaryCD;
+        maxSecondaryCD = am.earthSecondaryCD;
         wallTrigger = GetComponentInChildren<CapsuleCollider2D>();
     }
 

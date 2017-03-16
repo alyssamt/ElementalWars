@@ -13,6 +13,7 @@ public class Fireball : Damager {
     {
         base.Start();
         rigid = GetComponent<Rigidbody2D>();
+        damage = am.firePrimaryDamage;
     }
 
     private void Update()

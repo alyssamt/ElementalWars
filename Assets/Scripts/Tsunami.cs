@@ -12,6 +12,7 @@ public class Tsunami : Damager {
     {
         base.Start();
         rigid = GetComponent<Rigidbody2D>();
+        damage = am.waterPrimaryDamage;
     }
 
     private void Update()
@@ -49,7 +50,7 @@ public class Tsunami : Damager {
         {
             Destroy(gameObject);
         }
-        else if (collider.name.Contains("Fireball") || collider.name.Contains("Rock"))
+        else if (collider.name.Contains("Fireball") || (collider.name.Contains("Rock") && !collider.name.Contains("Trigger")))
         {
             // Must be AFTER tag check for wall
             Destroy(collider.gameObject);

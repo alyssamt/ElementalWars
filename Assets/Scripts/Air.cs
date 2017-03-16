@@ -8,6 +8,13 @@ public class Air : Character
     public GameObject tornadoPrefab;
     public GameObject barrierPrefab;
 
+    public override void Start()
+    {
+        base.Start();
+        maxPrimaryCD = am.firePrimaryCD;
+        maxSecondaryCD = am.fireSecondaryCD;
+    }
+
     public override void Primary()
     {
         // Tornado

@@ -10,6 +10,8 @@ public class Water : Character {
     public override void Start()
     {
         base.Start();
+        maxPrimaryCD = am.waterPrimaryCD;
+        maxSecondaryCD = am.waterSecondaryCD;
         ip = GetComponent<IcePath>();
     }
 

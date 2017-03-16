@@ -33,7 +33,8 @@ public class Tower : MonoBehaviour {
 
     private void Update()
     {
-        transform.position = Vector3.Lerp(origPos, moveTo, Mathf.PingPong(Time.time * tm.speed, 1.0f));
+        if (gm.playing)
+            transform.position = Vector3.Lerp(origPos, moveTo, Mathf.PingPong(Time.time * tm.speed, 1.0f));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

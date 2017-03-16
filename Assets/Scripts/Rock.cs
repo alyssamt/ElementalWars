@@ -5,15 +5,14 @@ using UnityEngine;
 public class Rock : Damager {
 
     public int speed;
-    public float duration;
     public AudioSource audSrc;
 
     public override void Start()
     {
-        audSrc = GetComponent<AudioSource>();
-
         base.Start();
-        Invoke("DestroyMe", duration);
+        audSrc = GetComponent<AudioSource>();
+        damage = am.earthSecondaryDamage;
+        Invoke("DestroyMe", am.earthPrimaryDuration);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

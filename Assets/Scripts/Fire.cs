@@ -7,6 +7,13 @@ public class Fire : Character {
     public GameObject fireballPrefab;
     public GameObject combustPrefab;
 
+    public override void Start()
+    {
+        base.Start();
+        maxPrimaryCD = am.firePrimaryCD;
+        maxSecondaryCD = am.fireSecondaryCD;
+    }
+
     public override void Primary()
     {
         // Fireball
