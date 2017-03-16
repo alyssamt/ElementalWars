@@ -50,9 +50,6 @@ public class GameManager : MonoBehaviour {
 
         currPlayer = 1;
 
-        p1towers = maxTowers;
-        p2towers = maxTowers;
-
         ff = true;
 	}
 	
@@ -73,6 +70,7 @@ public class GameManager : MonoBehaviour {
         {
             p2 = e;
             currPlayer = 1;
+            playerText.text = "P1";
             charSelect.SetActive(false);
             gameScreen.SetActive(true);
             StartBattle();
@@ -96,6 +94,9 @@ public class GameManager : MonoBehaviour {
             Destroy(t);
         }
         Instantiate(towersPrefab);
+
+        p1towers = maxTowers;
+        p2towers = maxTowers;
 
         GameObject p1go = Instantiate(charPrefabs[p1], new Vector2(-7, 0), Quaternion.Euler(new Vector3(0, 0, -90)));
         p1c = p1go.GetComponent<Character>();
