@@ -5,27 +5,35 @@ using UnityEngine;
 public class Tower : MonoBehaviour {
 
     public int player;
-
     public int health;
     public int maxHealth;
 
-    public GameManager gm;
+    public Vector2 origPos;
+    public Vector2 moveTo;
 
-    private SpriteRenderer rend;
+    public GameManager gm;
+    public TowerManager tm;
 
     private float colorDecrement;
-
+    private SpriteRenderer rend;
     private AudioSource audSrc;
 
     void Start()
     {
         health = maxHealth;
+        GameObject temp = GameObject.Find("GameManager");
+        gm = temp.GetComponent<GameManager>();
+        tm = temp.GetComponent<TowerManager>();
 
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         rend = GetComponent<SpriteRenderer>();
         rend.color = new Color(255, 255, 255, 255);
         colorDecrement = 1f / maxHealth;
         audSrc = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        transform.position = Vector3.Lerp(origPos, moveTo, Mathf.PingPong(Time.time * tm.speed, 1.0f));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -69,6 +77,6 @@ public class Tower : MonoBehaviour {
 
     private void DestroyMe()
     {
-        gm.DestroyTower(gameObject, player);
+        tm.DestroyTower(gameObject, player);
     }
 }

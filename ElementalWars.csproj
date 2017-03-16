@@ -90,6 +90,7 @@
     <Compile Include="Assets\Scripts\TextButton.cs" />
     <Compile Include="Assets\Scripts\Tornado.cs" />
     <Compile Include="Assets\Scripts\Tower.cs" />
+    <Compile Include="Assets\Scripts\TowerManager.cs" />
     <Compile Include="Assets\Scripts\TrailRendererWith2DCollider.cs" />
     <Compile Include="Assets\Scripts\Tsunami.cs" />
     <Compile Include="Assets\Scripts\Water.cs" />

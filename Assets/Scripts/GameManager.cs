@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
     public bool playing;
-    public int maxTowers;
 
     public GameObject mainMenu;
     public GameObject instructions;
@@ -21,20 +20,21 @@ public class GameManager : MonoBehaviour {
     public Text gameOverText;
 
     public List<GameObject> charPrefabs;
-    public GameObject towersPrefab;
 
     private int currPlayer;
     private int p1;
     private int p2;
-    private Character p1c;
-    private Character p2c;
+    public Character p1c;
+    public Character p2c;
     public Slider p1health;
     public Slider p2health;
-    public int p1towers;
-    public int p2towers;
 
     public bool ff;
     public Toggle fftoggle;
+
+    public List<Sprite> blueSprites;
+
+    public TowerManager tm;
 
 	void Start()
     {
@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour {
         currPlayer = 1;
 
         ff = true;
+
+        if (!tm) tm = GetComponent<TowerManager>();
 	}
 	
 	void Update()
@@ -88,15 +90,8 @@ public class GameManager : MonoBehaviour {
         {
             Destroy(p);
         }
-        GameObject t = GameObject.Find("Towers");
-        if (t != null)
-        {
-            Destroy(t);
-        }
-        Instantiate(towersPrefab);
 
-        p1towers = maxTowers;
-        p2towers = maxTowers;
+        tm.Reset();
 
         GameObject p1go = Instantiate(charPrefabs[p1], new Vector2(-7, 0), Quaternion.Euler(new Vector3(0, 0, -90)));
         p1c = p1go.GetComponent<Character>();
@@ -107,6 +102,7 @@ public class GameManager : MonoBehaviour {
         p1health.value = p1health.maxValue;
 
         GameObject p2go = Instantiate(charPrefabs[p2], new Vector2(7, 0), Quaternion.Euler(new Vector3(0, 0, 90)));
+        p2go.GetComponent<SpriteRenderer>().sprite = blueSprites[p2];
         p2c = p2go.GetComponent<Character>();
         p2c.player = 2;
         p2c.primaryKey = KeyCode.RightControl;
@@ -141,21 +137,6 @@ public class GameManager : MonoBehaviour {
     {
         p1health.value = p1c.health;
         p2health.value = p2c.health;
-    }
-
-    public void DestroyTower(GameObject t, int player)
-    {
-        Destroy(t);
-        if (player == 1)
-        {
-            p1towers -= 1;
-            if (p1towers == 0) GameOver(p1c);
-        }
-        else if (player == 2)
-        {
-            p2towers -= 1;
-            if (p2towers == 0) GameOver(p2c);
-        }
     }
 
     public void GameOver(Character loser)
