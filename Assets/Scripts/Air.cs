@@ -11,8 +11,8 @@ public class Air : Character
     public override void Start()
     {
         base.Start();
-        maxPrimaryCD = am.firePrimaryCD;
-        maxSecondaryCD = am.fireSecondaryCD;
+        maxPrimaryCD = am.airPrimaryCD;
+        maxSecondaryCD = am.airSecondaryCD;
     }
 
     public override void Primary()

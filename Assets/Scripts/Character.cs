@@ -9,7 +9,7 @@ public class Character : MonoBehaviour {
     public KeyCode primaryKey;
     public KeyCode secondaryKey;
 
-    [HideInInspector]
+    //[HideInInspector]
     public float primaryCD, maxPrimaryCD, secondaryCD, maxSecondaryCD;
 
     private Image primaryIconImg;
@@ -87,7 +87,7 @@ public class Character : MonoBehaviour {
         if (secondaryCD <= 0 && Input.GetKeyDown(secondaryKey))
         {
             Secondary();
-            secondaryCD = maxPrimaryCD;
+            secondaryCD = maxSecondaryCD;
         }
     }
 	

@@ -35,6 +35,7 @@ public class Earth : Character {
             if (wallTrigger.bounds.Contains(rock.transform.position) || wallTrigger.bounds.Intersects(b))
             {
                 Rock rs = rock.GetComponent<Rock>();
+                rs.DontDestroy();
                 Rigidbody2D rr = rock.GetComponent<Rigidbody2D>();
                 rs.origVel = transform.up * rs.speed;
                 rr.bodyType = RigidbodyType2D.Dynamic;

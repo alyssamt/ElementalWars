@@ -30,7 +30,6 @@ public class TowerManager : MonoBehaviour {
         gm = GetComponent<GameManager>();
         redTowers = new List<GameObject>();
         blueTowers = new List<GameObject>();
-        Reset();
     }
 
     public void Reset()

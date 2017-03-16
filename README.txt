@@ -1,20 +1,26 @@
 Game 3 Submission
 -----------------
+
 Teammates:
 1. alyssamt : 52852663
-2. smacha : 
+2. smacha : 92269171
+
 
 Repository:
 https://github.com/alyssamt/ElementalWars
 
+
 Summary:
-<GAME SUMMARY 1-3 Sentences>
+Elemental Wars is a 1v1 top-down battle arena with two ways to win: kill the other player, or destroy both of their towers. Each player has a primary and secondary attack, which depend on the element the player chooses. There are four elements - fire, water, earth, and air - each with their own unique abilities and playstyle.
+
 
 Player Experience:
-<FEELING THE DESIGNER WANTS THE PLAYER TO EXPERIENCE 1-3 Sentences>
+While playing Elemental Wars, we hope that the player will feel an ‘element’ of suspense and determination to win against their real-life opponent. The player should be able to embody their element of choice by understanding their capabilities and 'feeling' the consequences of what is happening in-game. The experience should be fast-paced, competitive, and demanding of focus, so that players are not thinking about anything else while battling in-game.
+
 
 Code References:
 None
+
 
 Asset References:
 
@@ -39,6 +45,7 @@ Wind Pattern | https://s-media-cache-ak0.pinimg.com/236x/78/a8/75/78a875ff493c87
 
 SOUND
 BG Music | One Punch Man OST
+Barrier Deflect | http://www.freesound.org/people/is44c/sounds/368360/
 Combust | http://www.freesound.org/people/ReadeOnly/sounds/186932/
 Fireball | http://www.freesound.org/people/Robinhood76/sounds/248116/
 Ice Trail | http://www.freesound.org/people/karlis.stigis/sounds/168712/

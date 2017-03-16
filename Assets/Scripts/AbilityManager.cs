@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class AbilityManager : MonoBehaviour {
 
-    public int firePrimaryDamage, firePrimaryCD,
-        fireSecondaryDamage, fireSecondaryCD,
-        waterPrimaryDamage, waterPrimaryCD,
-        waterSecondaryCD, waterSecondaryDuration,
-        earthPrimaryCD, earthPrimaryDuration,
-        earthSecondaryDamage, earthSecondaryCD,
-        airPrimaryDamage, airPrimaryCD, airPrimaryDuration,
-        airSecondaryCD, airSecondaryDuration;
+    public int firePrimaryDamage, fireSecondaryDamage,
+        waterPrimaryDamage, waterSecondaryDuration,
+        earthPrimaryDuration, earthSecondaryDamage,
+        airPrimaryDamage, airPrimaryDuration, airSecondaryDuration;
+
+    public float firePrimaryCD, fireSecondaryCD,
+        waterPrimaryCD, waterSecondaryCD,
+        earthPrimaryCD, earthSecondaryCD,
+        airPrimaryCD, airSecondaryCD;
 }

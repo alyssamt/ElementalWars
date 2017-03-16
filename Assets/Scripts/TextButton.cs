@@ -8,22 +8,13 @@ public class TextButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 {
     public Color defaultColor;
     public Color hoverColor;
-
     public GameManager gm;
-
     private Text myText;
 
-    // Use this for initialization
     void Start()
     {
         if (!gm) GameObject.Find("GameManager").GetComponent<GameManager>();
         myText = gameObject.GetComponent<Text>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -32,6 +23,11 @@ public class TextButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         {
             gm.mainMenu.SetActive(false);
             gm.instructions.SetActive(true);
+        }
+        else if (gameObject.name == "Options")
+        {
+            gm.mainMenu.SetActive(false);
+            gm.optionsScreen.SetActive(true);
         }
         else if (gameObject.name == "Play")
         {
@@ -42,22 +38,23 @@ public class TextButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         {
             gm.mainMenu.SetActive(true);
             gm.instructions.SetActive(false);
+            gm.optionsScreen.SetActive(false);
             gm.gameScreen.SetActive(false);
             gm.gameOverScreen.SetActive(false);
         }
-        else if (gameObject.name == "Fire")
+        else if (gameObject.name.Contains("Fire"))
         {
             gm.SelectElement(0);
         }
-        else if (gameObject.name == "Air")
+        else if (gameObject.name.Contains("Air"))
         {
             gm.SelectElement(1);
         }
-        else if (gameObject.name == "Water")
+        else if (gameObject.name.Contains("Water"))
         {
             gm.SelectElement(2);
         }
-        else if (gameObject.name == "Earth")
+        else if (gameObject.name.Contains("Earth"))
         {
             gm.SelectElement(3);
         }

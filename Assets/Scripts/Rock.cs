@@ -51,4 +51,9 @@ public class Rock : Damager {
     {
         Destroy(gameObject);
     }
+
+    public void DontDestroy()
+    {
+        CancelInvoke();
+    }
 }
